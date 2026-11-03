@@ -1,0 +1,4 @@
+tcov reset
+create md := new Monedero(100,[1,2,3,4])
+print md.Retirar(50)
+print md.Retirar(180)

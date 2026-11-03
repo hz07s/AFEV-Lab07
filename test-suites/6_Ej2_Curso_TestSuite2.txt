@@ -1,0 +1,11 @@
+tcov reset
+create c := new Curso(2)
+print c.Inscribir(101)
+print c.Inscribir(101)
+print c.Aprobar(101)
+print c.Aprobar(999)
+print c.EstaInscrito(101)
+print c.CantidadInscritos()
+print c.CuposDisponibles()
+tcov write vdm.tc
+rtinfo vdm.tc

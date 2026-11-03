@@ -1,0 +1,27 @@
+class Monedero
+
+instance variables
+  private balance : nat := 0;
+  private pin : seq of nat := [];
+
+  inv len pin = 4
+
+operations
+  public Monedero: nat * seq of nat ==> Monedero
+  Monedero(bal, p) ==
+    atomic( balance := bal;
+            pin := p )
+  pre len p = 4;
+
+  public Retirar: nat ==> nat
+  Retirar(monto) ==
+    if monto <= balance
+    then ( balance := balance - monto;
+           return monto )
+    else return Credito_OP(monto - balance);
+
+  private Credito_OP: nat ==> nat
+  Credito_OP(deficit) ==
+    return deficit;
+
+end Monedero

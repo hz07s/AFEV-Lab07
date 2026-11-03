@@ -1,0 +1,46 @@
+class Curso
+
+types
+  public AlumnoId = nat1;
+
+instance variables
+  private inscritos : set of AlumnoId;
+  private aprobados : set of AlumnoId;
+  private capacidad : nat;
+
+inv aprobados subset inscritos and card inscritos <= capacidad
+
+operations
+  public Curso: nat ==> Curso
+  Curso(cap) ==
+    (inscritos := {};
+     aprobados := {};
+     capacidad := cap);
+
+  public Inscribir: AlumnoId ==> bool
+  Inscribir(a) ==
+    (if a in set inscritos
+     then return false
+     else (inscritos := inscritos union {a};
+           return true));
+
+  public Aprobar: AlumnoId ==> bool
+  Aprobar(a) ==
+    (if a in set inscritos
+     then (aprobados := aprobados union {a};
+           return true)
+     else return false);
+
+  public EstaInscrito: AlumnoId ==> bool
+  EstaInscrito(a) ==
+    return a in set inscritos;
+
+  public CantidadInscritos: () ==> nat
+  CantidadInscritos() ==
+    return card inscritos;
+
+  public CuposDisponibles: () ==> nat
+  CuposDisponibles() ==
+    return capacidad - card inscritos;
+
+end Curso

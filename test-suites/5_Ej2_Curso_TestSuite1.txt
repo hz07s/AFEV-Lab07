@@ -1,0 +1,5 @@
+tcov reset
+create c := new Curso(2)
+print c.Inscribir(101)
+tcov write vdm.tc
+rtinfo vdm.tc
